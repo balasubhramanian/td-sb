@@ -1,0 +1,34 @@
+
+<html>
+  <head>
+    <script src="https://helper.test.trustdock.io/v2/verification_helper.js"></script>
+    <script>
+      var vid = prompt("Enter public verifcation id");
+      var planid = prompt("Enter plan id","0db51851-b9c1-4fc2-adda-5a72c13aab94")
+      const trustdock = new Trustdock({
+        publicId: vid,
+        plans: [
+          {
+            id: planid
+          }
+        ],
+        openerSelector: '.opener'
+      });
+
+      // Function when an event is received
+      trustdock.on('documentsubmitted', () => {
+        // Describe here a process to be executed when the submission of verification documents is complete.
+        // e.g., Force-direct users to the next page if they don't close the modal window after submission
+      })
+      trustdock.on('completed', () => {
+        // Describe here a process to be executed when the submission of verification documents is complete and the modal window is closed.
+      })
+      trustdock.on('canceled', () => {
+        // Describe here a process to be executed when the modal window is closed prior to submission of verification documents.
+      })
+    </script>
+  </head>
+  <body>
+    <button class="opener">Submit documents for the identity verification plan</button>
+  </body>
+</html>
